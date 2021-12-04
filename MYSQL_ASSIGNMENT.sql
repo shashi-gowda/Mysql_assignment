@@ -54,7 +54,7 @@ GROUP BY Sname HAVING SUM(Amt)>2000; -- 2ND QSN
 SELECT COUNT(City), Sname, City FROM SalesPeople WHERE City='Newyork';
 
 -- 4TH QSN--> Display the number of Salespeople belonging to London and belonging to Paris.-- 
-SELECT Sname, City FROM SalesPeople WHERE City='London' OR 'Paris';
+SELECT COUNT(City) FROM SalesPeople WHERE City='London' OR 'Paris';
 
 -- 5TH QSN--> Display the number of orders taken by each Salesperson and their date of orders.-- 
 SELECT Orders.Snum, SalesPeople.Sname,COUNT(Orders.Snum) AS 'NO_OF_ORDERS',
