@@ -44,27 +44,19 @@ INSERT INTO Orders VALUES(3001 ,18.69 ,'1990-10-3', 2008 ,1007),
 SELECT * FROM Orders;
 
 -- QS1--> Count the number of Salesperson whose name begin with ‘a’/’A’ -- 
-SELECT COUNT(Sname), Sname FROM SalesPeople WHERE Sname LIKE 'A%' OR 'a%';
+SELECT COUNT(Sname) FROM SalesPeople WHERE Sname LIKE 'A%';
 
 -- 2ND QSN--> Display all the Salesperson whose all orders worth is more than Rs. 2000.--  
 SELECT Sname, SUM(Amt) FROM SalesPeople JOIN Orders ON SalesPeople.Snum=Orders.Snum 
-GROUP BY Sname HAVING SUM(Amt)>2000; -- 2ND QSN
+GROUP BY Sname HAVING SUM(Amt)>2000;
  
 -- 3RD QSN--> Count the number of Salesperson belonging to Newyork. -- 
-SELECT COUNT(City), Sname, City FROM SalesPeople WHERE City='Newyork';
+SELECT COUNT(Sname) FROM SalesPeople WHERE City='Newyork';
 
 -- 4TH QSN--> Display the number of Salespeople belonging to London and belonging to Paris.-- 
-SELECT COUNT(City) FROM SalesPeople WHERE City='London' OR 'Paris';
+SELECT City,COUNT(City) FROM SalesPeople WHERE City='London' OR City='Paris';
 
 -- 5TH QSN--> Display the number of orders taken by each Salesperson and their date of orders.-- 
 SELECT Orders.Snum, SalesPeople.Sname,COUNT(Orders.Snum) AS 'NO_OF_ORDERS',
 GROUP_CONCAT(Orders.Odate) AS 'ORDER_DATES' FROM SalesPeople
 JOIN Orders ON Orders.Snum=SalesPeople.Snum GROUP BY Snum;
-
-
-
-
-
-
-
-
